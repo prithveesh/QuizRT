@@ -1,0 +1,29 @@
+{
+  "name": "@mands/QuizRT-GameEngine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prithveesh/QuizRT-GameEngine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prithveesh/QuizRT-GameEngine/issues"
+  },
+  "homepage": "https://github.com/prithveesh/QuizRT-GameEngine#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "graphql": "^0.12.3",
+    "graphql-server-express": "^1.3.2",
+    "graphql-tools": "^2.18.0",
+    "mongoose": "^4.13.9"
+  }
+}
