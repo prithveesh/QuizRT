@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
 const cors =  require('cors');
-// const mongoConn = require('./mongoConnection')();
+const mongoConn = require('./mongoConnection')();
 const server = require('express')();
 const config = require('./config.js');
 
