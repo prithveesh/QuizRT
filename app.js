@@ -1,9 +1,10 @@
-const bodyParser = require('body-parser');
-const cors =  require('cors');
+import bodyParser from 'body-parser';
+import cors from 'cors';
 const mongoConn = require('./mongoConnection')();
-const server = require('express')();
+import express from 'express';
 const swaggerUi = require('swagger-ui-express');
 
+const server = express();
 const config = require('./config.js');
 const swaggerDocument = require('./swagger.json');
 
