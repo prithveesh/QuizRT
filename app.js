@@ -12,6 +12,10 @@ const swaggerDocument = require('./swagger.json');
 server.use(bodyParser.json());
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-server.listen(config.SERVER_URI, () => {
+server.listen(config.SERVER_URI, (req, res) => {
 	console.log(`server listen at ${config.SERVER_URI}`);
+})
+
+server.get('/', (req, res) => {
+	res.send('Hello, I am up and running');
 })
