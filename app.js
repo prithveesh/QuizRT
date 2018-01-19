@@ -1,21 +1,38 @@
+
 import bodyParser from 'body-parser';
 import cors from 'cors';
-const mongoConn = require('./mongoConnection')();
 import express from 'express';
-const swaggerUi = require('swagger-ui-express');
 
-const server = express();
+import GraphqlHTTP from 'express-graphql';
+import db from './utils/db';
+import Schema from './models';
+
+
+const swaggerUi = require('swagger-ui-express');
 const config = require('./config.js');
 const swaggerDocument = require('./swagger.json');
 
+const app = express();
 // Setup bodyParsing middleware
-server.use(bodyParser.json());
-server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(bodyParser.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-server.listen(config.SERVER_URI, (req, res) => {
-	console.log(`server listen at ${config.SERVER_URI}`);
-})
+app.use('/graphql', GraphqlHTTP({
+	schema: Schema,
+	pretty: true,
+	graphiql: true
+}));
 
-server.get('/', (req, res) => {
+app.get('/', (req, res) => {
 	res.send('Hello, I am up and running');
-})
+});
+
+db(config.MONGO.PROTOCOL + config.MONGO.DOMAIN + config.MONGO.PORT + config.MONGO.BUCKET, function(err){
+	if(err){
+		console.log("Unable to connect to mongoDB....");
+	}else{
+		app.listen(config.PORT, () => {
+			console.log(`server listen at ${config.SERVER_URI}`);
+		});
+	}
+});

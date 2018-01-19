@@ -1,6 +1,11 @@
 let config = {
-  MONGO_URI: "mongodb://localhost:27017/products",
-  SERVER_URI: 3000
+  PORT: 3000,
+  MONGO: {
+    PROTOCOL: "mongodb://",
+    DOMAIN: "localhost",
+    PORT: "27017",
+    BUCKET: "/gameBucket"
+  }
 }
 
 module.exports = config
