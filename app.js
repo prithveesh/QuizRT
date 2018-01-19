@@ -1,14 +1,12 @@
 
 import bodyParser from 'body-parser';
-import cors from 'cors';
 import express from 'express';
-
 import GraphqlHTTP from 'express-graphql';
+import swaggerUi from 'swagger-ui-express';
+
 import db from './utils/db';
 import Schema from './models';
 
-
-const swaggerUi = require('swagger-ui-express');
 const config = require('./config.js');
 const swaggerDocument = require('./swagger.json');
 
@@ -32,7 +30,7 @@ db(config.MONGO.PROTOCOL + config.MONGO.DOMAIN + config.MONGO.PORT + config.MONG
 		console.log("Unable to connect to mongoDB....");
 	}else{
 		app.listen(config.PORT, () => {
-			console.log(`server listen at ${config.SERVER_URI}`);
+			console.log(`server listen at ${config.PORT}`);
 		});
 	}
 });

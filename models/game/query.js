@@ -1,5 +1,5 @@
 export default `
 type Query {
-    getGame(gameId: ID): [Game]
+    getGame(gameId: String!): [Game]
 }
 `;

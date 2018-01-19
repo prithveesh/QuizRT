@@ -6,6 +6,5 @@ const QuestionQuery = `
 `;
 
 export default {
-    QuestionQuery: QuestionQuery,
-    QuestionResolvers: {}
+    typeDefs: QuestionQuery
 };

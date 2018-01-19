@@ -10,7 +10,9 @@ import queryResolver from './game/query.resolver';
 
 // List of all Types/Queries
 const types = [
-    gameSchema.typeDefs
+    gameSchema.typeDefs,
+    questionSchema.typeDefs,
+    userSchema.typeDefs
 ];
 // List of all Resolvers
 const resolvers = [

@@ -11,7 +11,7 @@ export default {
                 questions: args.questions,
                 result: args.result,
                 players: args.players
-            })
+            });
         }
     }
 };

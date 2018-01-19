@@ -3,7 +3,7 @@ let config = {
   MONGO: {
     PROTOCOL: "mongodb://",
     DOMAIN: "localhost",
-    PORT: "27017",
+    PORT: ":27017",
     BUCKET: "/gameBucket"
   }
 }

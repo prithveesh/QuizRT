@@ -1,7 +1,7 @@
 export default `
 type Mutation {
     createGame(
-        gameId: ID!
+        gameId: String!
         status: String!
         topicId: String!
         questions: [String]

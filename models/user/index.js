@@ -6,6 +6,5 @@ const UserQuery = `
 `;
 
 export default {
-    UserQuery: UserQuery,
-    UserResolvers: {}
+    typeDefs: UserQuery
 };
