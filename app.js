@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 	res.send('Hello, I am up and running');
 });
 
-db(config.MONGO.PROTOCOL + config.MONGO.DOMAIN + config.MONGO.PORT + config.MONGO.BUCKET, function(err){
+db(`${config.MONGO.PROTOCOL}${config.MONGO.DOMAIN}${config.MONGO.PORT}${config.MONGO.BUCKET}`, function(err){
 	if(err){
 		console.log("Unable to connect to mongoDB....");
 	}else{
