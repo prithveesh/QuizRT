@@ -3,10 +3,12 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import GraphqlHTTP from 'express-graphql';
 import swaggerUi from 'swagger-ui-express';
+import session from 'express-session';
 
 import db from './utils/db';
 import Schema from './models';
 
+const redisStore = require('connect-redis')(session);
 const config = require('./config.js');
 const swaggerDocument = require('./swagger.json');
 
@@ -25,7 +27,7 @@ app.get('/', (req, res) => {
 	res.send('Hello, I am up and running');
 });
 
-db(config.MONGO.PROTOCOL + config.MONGO.DOMAIN + config.MONGO.PORT + config.MONGO.BUCKET, function(err){
+db(`${config.MONGO.PROTOCOL}${config.MONGO.DOMAIN}${config.MONGO.PORT}${config.MONGO.BUCKET}`, function(err){
 	if(err){
 		console.log("Unable to connect to mongoDB....");
 	}else{
