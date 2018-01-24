@@ -3,7 +3,7 @@ import Game from './schema.js';
 
 export default {
     Query: {
-        getGame: (_, args) => {
+        getGameById: (_, args) => {
             return Game.find({gameId: args.gameId});
         }
     }

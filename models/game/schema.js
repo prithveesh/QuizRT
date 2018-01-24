@@ -17,14 +17,18 @@ const gameEngineSchema = new Schema({
     },
     questions: [
         {
-            id: String,
-            answer: String
+            qId: String,
+            answer: String,
+            _id: false
         }
     ],
     result: [String],
     players: [
         {
-            id: String,
+            _id: false,
+            uId: {
+                type: String
+            },
             averageTime: Number,
             status: String,
             totalScore: Number,
@@ -39,6 +43,7 @@ const gameEngineSchema = new Schema({
         }
     ]
 });
+
 
 
 export default mongoose.model('GameEngine', gameEngineSchema);

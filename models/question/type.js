@@ -1,5 +1,5 @@
 export default `type Question {
-    questionId: String!
+    qId: String!
     answer: String!
     time: Int
     status: Boolean

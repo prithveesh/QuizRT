@@ -1,8 +1,8 @@
 export default `
 type User {
-    userId: String!
+    uId: String!
     averageTime: Int
-    status: String!
+    status: String
     totalScore: Int
     questions: [Question]
 }
