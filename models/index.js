@@ -2,22 +2,24 @@
 import { mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 import { makeExecutableSchema } from 'graphql-tools';
 import { buildSchema } from 'graphql';
-import gameSchema from './game/index.js';
-import questionSchema from './question';
-import userSchema from './user';
-import queryResolver from './game/query.resolver';
+import gameSchema from './game/index';
+import questionSchema from './question/index';
+import userSchema from './user/index';
 
 
 // List of all Types/Queries
 const types = [
-    gameSchema.typeDefs,
     questionSchema.typeDefs,
-    userSchema.typeDefs
+    userSchema.typeDefs,
+    gameSchema.typeDefs
 ];
 // List of all Resolvers
 const resolvers = [
+    questionSchema.resolvers.Mutation,
+    userSchema.resolvers.Mutation,
     gameSchema.resolvers.Query,
     gameSchema.resolvers.Mutation
+
 ];
 
 // Merge all types and resolvers
