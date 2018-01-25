@@ -1,5 +1,6 @@
 'use strict';
 import Game from '../game/schema.js';
+import { publishGlobalEvents, subscribeGlobalEvents } from '../../utils/pub-sub';
 import { ERROR } from '../../constants/messages';
 
 export default {
@@ -14,6 +15,12 @@ export default {
                             answer: args.answer
                         }
                     );
+                    subscribeGlobalEvents('ADD_QUESTIONS_GAME', (subEvent) => {
+                        subEvent.on("message", (channel, message) => {
+                            console.log(`Received the following message from ${channel}: ${message}`);
+                        });
+                    });
+                    publishGlobalEvents('ADD_QUESTIONS_GAME', JSON.stringify(game));
                     return game.save();
                 }else{
                     return new Error(ERROR.QUESTION.DUPLICATE);
@@ -29,6 +36,12 @@ export default {
                         return true;
                     }
                 })){
+                    subscribeGlobalEvents('UPDATE_QUESTIONS_GAME', (subEvent) => {
+                        subEvent.on("message", (channel, message) => {
+                            console.log(`Received the following message from ${channel}: ${message}`);
+                        });
+                    });
+                    publishGlobalEvents('UPDATE_QUESTIONS_GAME', JSON.stringify(game));
                     return game.save();
                 }else{
                     return new Error(ERROR.QUESTION.NOT_FOUND);
