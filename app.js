@@ -11,6 +11,7 @@ import Schema from './models';
 const redisStore = require('connect-redis')(session);
 const config = require('./config.js');
 const swaggerDocument = require('./swagger.json');
+import { publishGlobalEvents, subscribeGlobalEvents } from './utils/pub-sub';
 
 const app = express();
 // Setup bodyParsing middleware
@@ -24,6 +25,11 @@ app.use('/graphql', GraphqlHTTP({
 }));
 
 app.get('/', (req, res) => {
+	subscribeGlobalEvents('GAME_START', (subEvent) => {
+		subEvent.on("message", (channel, message) => {
+				console.log('aaaaaaa', message);
+		});	
+	});
 	res.send('Hello, I am up and running');
 });
 
