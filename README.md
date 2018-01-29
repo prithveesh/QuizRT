@@ -36,7 +36,7 @@
 
 2.) `npm install`
 
-3.) To run the server. Please use `npm run start`. Application will run on Port number 3000
+3.) To run the server. `Run MongoDB` and `Start Redis` then use `npm run start` Application will run on Port number 3000. 
 
 3.) Mongo has been used as DB which is running on mongodb://localhost:27017 and bucket name is `gameBucket` & db name is `GameEngine`
 
